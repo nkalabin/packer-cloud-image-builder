@@ -18,12 +18,10 @@ if command -v cloud-init >/dev/null 2>&1; then
   cloud-init clean --logs --reboot || true
 fi
 
-export DEBIAN_FRONTEND=noninteractive
-apt update -y
-apt upgrade -y
-apt install -y --no-install-recommends openssh-server
-apt autoremove -y
-apt clean
+dnf update -y
+dnf install -y openssh-server cloud-utils-growpart cloud-initramfs-growroot
+dnf autoremove -y
+dnf clean all
 
 if [ -f /etc/machine-id ]; then
   truncate -s 0 /etc/machine-id || true

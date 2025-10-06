@@ -23,6 +23,7 @@ export DEBIAN_FRONTEND=noninteractive
 apt update -y
 apt upgrade -y
 apt install -y --no-install-recommends openssh-server cloud-guest-utils cloud-initramfs-growroot
+apt install -y python3
 apt autoremove -y
 apt clean
 
